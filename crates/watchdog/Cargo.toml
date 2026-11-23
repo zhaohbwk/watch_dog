@@ -1,0 +1,16 @@
+[package]
+name = "watchdog"
+version = "0.1.0"
+edition = "2021"
+description = "Windows 应用看门狗服务端：以 Windows 服务方式运行，监测并自动拉起配置的 exe/bat/jar/ps1 程序"
+
+[[bin]]
+name = "watchdog"
+path = "src/main.rs"
+
+[dependencies]
+watchdog-core = { path = "../watchdog-core" }
+
+[build-dependencies]
+# 嵌入品牌图标资源（见 build.rs）
+winresource = "0.1"

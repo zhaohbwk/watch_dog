@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 320">
+  <!-- watch_dog 横版组合：深色背景用（浅色字样） -->
+  <defs>
+    <linearGradient id="bgH2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#14263F"/>
+      <stop offset="1" stop-color="#0A1428"/>
+    </linearGradient>
+    <linearGradient id="furH2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F4FBFF"/>
+      <stop offset="1" stop-color="#BBD9EE"/>
+    </linearGradient>
+    <linearGradient id="visorH2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2B4B72"/>
+      <stop offset="1" stop-color="#1D3A5C"/>
+    </linearGradient>
+    <linearGradient id="ledH2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5DF08C"/>
+      <stop offset="1" stop-color="#1FBF62"/>
+    </linearGradient>
+    <filter id="glowH2" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+
+  <!-- 徽章图标 -->
+  <g transform="translate(32,32) scale(0.5)">
+    <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#bgH2)"/>
+    <rect x="20" y="20" width="472" height="472" rx="100" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="2"/>
+    <path d="M88,458 L233,458 L246,438 L262,486 L275,458 L424,458"
+          fill="none" stroke="#2EE27A" filter="url(#glowH2)" opacity="0.5" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M88,458 L233,458 L246,438 L262,486 L275,458 L424,458"
+          fill="none" stroke="#2EE27A" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M118,38 L98,200 L112,306 L160,368 L208,404 L256,420 L304,404 L352,368 L400,306 L414,200 L394,38 L322,116 L256,128 L190,116 Z"
+          fill="url(#furH2)" stroke="url(#furH2)" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M126,60 L114,178 L176,114 Z" fill="#D2E6F6"/>
+    <path d="M386,60 L398,178 L336,114 Z" fill="#D2E6F6"/>
+    <path d="M160,204 L256,180 L352,204 L344,284 L256,302 L168,284 Z"
+          fill="url(#visorH2)" stroke="url(#visorH2)" stroke-width="12" stroke-linejoin="round"/>
+    <rect x="172" y="228" width="62" height="30" rx="13" fill="#4BE083" filter="url(#glowH2)" opacity="0.95" transform="rotate(-10 203 243)"/>
+    <rect x="278" y="228" width="62" height="30" rx="13" fill="#4BE083" filter="url(#glowH2)" opacity="0.95" transform="rotate(10 309 243)"/>
+    <rect x="172" y="228" width="62" height="30" rx="13" fill="url(#ledH2)" transform="rotate(-10 203 243)"/>
+    <rect x="278" y="228" width="62" height="30" rx="13" fill="url(#ledH2)" transform="rotate(10 309 243)"/>
+    <path d="M180,300 L332,300 L306,374 L256,396 L208,374 Z"
+          fill="#FAFDFF" stroke="#FAFDFF" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M218,320 L294,320 L256,356 Z" fill="#0E1E36" stroke="#0E1E36" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M256,356 L256,372" stroke="#0E1E36" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <!-- 字标：watch + 心跳下划线 + dog（Consolas 等宽，textLength 锁定宽度保证对齐） -->
+  <text x="316" y="184" font-family="Consolas, 'Cascadia Mono', 'Courier New', monospace"
+        font-weight="700" font-size="96" fill="#EAF3FC" textLength="264" lengthAdjust="spacingAndGlyphs">watch</text>
+  <path d="M583,200 L601,200 L608,172 L618,224 L624,200 L630,200"
+        fill="none" stroke="#2EE27A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="632.8" y="184" font-family="Consolas, 'Cascadia Mono', 'Courier New', monospace"
+        font-weight="700" font-size="96" fill="#EAF3FC" textLength="158.4" lengthAdjust="spacingAndGlyphs">dog</text>
+</svg>

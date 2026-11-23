@@ -1,0 +1,85 @@
+# 应用看门狗配置样例
+# 复制为 watchdog.toml 放到 watchdog.exe 同目录（或用 --config 指定路径）
+# 先执行 `watchdog validate` 校验配置
+
+# 检测间隔（秒），默认 5，最小 1
+check_interval_secs = 5
+
+# 日志文件路径（可选）。默认：watchdog.exe 同目录 logs\watchdog.log
+# log_file = "C:\\Watchdog\\logs\\watchdog.log"
+
+# ============ 被监控程序列表（每项一个 [[programs]]）============
+
+# 1. 普通 exe：默认按进程镜像名 myapp.exe 检测
+[[programs]]
+name = "myapp-server"
+path = "C:\\apps\\myapp\\myapp.exe"
+args = ["--port", "8080"]
+workdir = "C:\\apps\\myapp"
+
+# 2. jar 程序：实际进程是 java.exe，按命令行中包含 jar 路径检测
+#    java 未配置时依次取 JAVA_HOME\bin\java.exe、PATH 中的 java.exe
+[[programs]]
+name = "data-service"
+path = "C:\\apps\\data\\data-service.jar"
+java = "C:\\Program Files\\Java\\jdk-17.0.10\\bin\\java.exe"
+args = ["--spring.profiles.active=prod"]
+workdir = "C:\\apps\\data"
+
+# 3. bat 脚本：实际进程是 cmd.exe，按命令行中包含脚本路径检测
+#    注意：一次性脚本退出后会被再次拉起，直到达到重启上限；
+#    如需周期性执行请改用任务计划程序
+[[programs]]
+name = "daily-backup"
+path = "C:\\apps\\scripts\\backup.bat"
+workdir = "C:\\apps\\scripts"
+max_restarts_per_hour = 3
+
+# 4. 自定义检测规则（可选）：覆盖默认推导的匹配方式
+#    detect.image            按进程镜像名匹配（如 "legacy-worker.exe"）
+#    detect.cmdline_contains 按命令行子串匹配（大小写不敏感）
+#    name = "legacy-tool"
+#    path = "C:\apps\legacy\runner.exe"
+#    detect = { image = "legacy-worker.exe", cmdline_contains = "worker" }
+
+# 5. 端口检测（可选）：配置 detect.port 后，以"端口可连通"判定程序是否在运行——
+#    进程在但端口持续 60 秒不通时判定假死，看门狗先结束匹配进程（按镜像名/命令行
+#    规则匹配）再重新拉起，可发现服务假死（进程未退出但已不响应）的情况。
+#    detect.host 检测主机，缺省 127.0.0.1；服务监听 0.0.0.0 时无需修改，
+#    仅监听某个具体网卡 IP 时才需要改成对应地址。
+#    [[programs]]
+#    name = "web-server"
+#    path = "C:\\apps\\web\\server.exe"
+#    detect = { port = 8080 }
+
+# 5. 启动延迟（可选）：看门狗启动后等待 N 秒才首次拉起该程序，
+#    用于控制多个程序的启动顺序（如先启动服务端，再启动依赖它的模型）。
+#    只约束看门狗启动后的首次拉起；程序退出后的自动重启不受影响。
+#    下面示例：先启动 server，10 秒后启动依赖它的 worker。
+#    [[programs]]
+#    name = "server"
+#    path = "C:\apps\server\server.exe"
+#    start_delay_secs = 0
+#
+#    [[programs]]
+#    name = "worker"
+#    path = "C:\apps\worker\worker.exe"
+#    start_delay_secs = 10
+
+# 其它字段说明：
+#   args                    启动参数（字符串数组）
+#   workdir                 工作目录；缺省为程序所在目录
+#                           （exe/bat/jar 常依赖相对路径找资源，务必让它在自己目录下启动）
+#   detect.port             端口检测（1~65535），说明见上例；启用后以端口为准
+#   detect.host             端口检测的主机，缺省 127.0.0.1，需与 detect.port 一起配置
+#   max_restarts_per_hour   一小时内最多自动启动次数，防止崩溃循环；
+#                           0 表示不限制（默认 10）
+#   start_delay_secs        启动延迟秒数（默认 0），说明见上；仅在首次拉起前生效
+#   skip                    跳过监控（默认 false）：true 时看门狗不监控、不自动拉起该程序，
+#                           配置保留，改回 false 或删除该字段即可恢复；
+#                           对应 GUI 中每个程序的「跳过监控」勾选（保存后需重启服务生效）
+#   log_file                程序自己写出的日志文件路径（可选，每程序一个）：
+#                           仅供 GUI 日志窗口实时查看（如 Java 应用的 logs\app.log），
+#                           看门狗不读取、不轮转该文件；缺省时日志窗口仅显示控制台输出。
+#                           对应 GUI 中每个程序的「日志文件」输入框
+#                           （log_file = "C:\\apps\\myapp\\logs\\app.log"）

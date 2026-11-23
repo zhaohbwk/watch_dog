@@ -1,0 +1,31 @@
+[package]
+name = "watchdog-gui"
+version = "0.1.0"
+edition = "2021"
+description = "应用看门狗图形配置工具：编辑监控配置、管理 Windows 服务、查看日志"
+
+[[bin]]
+name = "watchdog-gui"
+path = "src/main.rs"
+
+[dependencies]
+watchdog-core = { path = "../watchdog-core" }
+eframe = { version = "0.36", default-features = false, features = ["wgpu", "default_fonts"] }
+egui = "0.36"
+rfd = "0.17"
+# 程序输出日志的编码回退：子进程输出多为控制台代码页编码（中文系统为 GBK）
+encoding_rs = "0.8"
+
+[target.'cfg(windows)'.dependencies]
+windows-service = "0.8"
+windows-sys = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Threading",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[build-dependencies]
+# 嵌入品牌图标资源（见 build.rs）
+winresource = "0.1"

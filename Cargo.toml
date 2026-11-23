@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/watchdog-core",
+    "crates/watchdog",
+    "crates/watchdog-gui",
+]
+
+[profile.release]
+strip = true
+lto = true

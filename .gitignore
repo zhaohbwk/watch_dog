@@ -1,0 +1,21 @@
+# Rust 构建产物
+/target
+/release
+installer/dist/
+
+# NSIS 工具链（build_installer.ps1 缺失时自动下载）
+installer/nsis/
+installer/_download/
+
+# 日志
+*.log
+
+# macOS 解压残留
+__MACOSX/
+._*
+
+# 本地编辑器/工具配置
+.zcode/
+
+# 临时文件
+assets/logo/_tmp/

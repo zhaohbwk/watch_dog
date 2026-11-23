@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- watch_dog 无底徽标：深色狗头版（浅色背景用，透明底） -->
+  <defs>
+    <linearGradient id="furW" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33587F"/>
+      <stop offset="1" stop-color="#1E3D61"/>
+    </linearGradient>
+    <linearGradient id="visorW" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7EA7CC"/>
+      <stop offset="1" stop-color="#5C87AE"/>
+    </linearGradient>
+    <linearGradient id="ledW" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#43DC7F"/>
+      <stop offset="1" stop-color="#0EA352"/>
+    </linearGradient>
+    <filter id="glowW" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+
+  <!-- 心跳脉冲（画在头后面） -->
+  <path d="M88,458 L233,458 L246,438 L262,486 L275,458 L424,458"
+        fill="none" stroke="#12AC5B" filter="url(#glowW)" opacity="0.4" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M88,458 L233,458 L246,438 L262,486 L275,458 L424,458"
+        fill="none" stroke="#12AC5B" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 狗头剪影 -->
+  <path d="M118,38 L98,200 L112,306 L160,368 L208,404 L256,420 L304,404 L352,368 L400,306 L414,200 L394,38 L322,116 L256,128 L190,116 Z"
+        fill="url(#furW)" stroke="url(#furW)" stroke-width="14" stroke-linejoin="round"/>
+
+  <!-- 耳窝阴影 -->
+  <path d="M126,60 L114,178 L176,114 Z" fill="#16304F"/>
+  <path d="M386,60 L398,178 L336,114 Z" fill="#16304F"/>
+
+  <!-- 面罩（夜视护目镜） -->
+  <path d="M160,204 L256,180 L352,204 L344,284 L256,302 L168,284 Z"
+        fill="url(#visorW)" stroke="url(#visorW)" stroke-width="12" stroke-linejoin="round"/>
+
+  <!-- 状态灯眼睛（绿 = 运行中） -->
+  <rect x="172" y="228" width="62" height="30" rx="13" fill="#3BCB74" filter="url(#glowW)" opacity="0.95" transform="rotate(-10 203 243)"/>
+  <rect x="278" y="228" width="62" height="30" rx="13" fill="#3BCB74" filter="url(#glowW)" opacity="0.95" transform="rotate(10 309 243)"/>
+  <rect x="172" y="228" width="62" height="30" rx="13" fill="url(#ledW)" transform="rotate(-10 203 243)"/>
+  <rect x="278" y="228" width="62" height="30" rx="13" fill="url(#ledW)" transform="rotate(10 309 243)"/>
+
+  <!-- 口鼻 -->
+  <path d="M180,300 L332,300 L306,374 L256,396 L208,374 Z"
+        fill="#F2F8FD" stroke="#F2F8FD" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M218,320 L294,320 L256,356 Z" fill="#10253F" stroke="#10253F" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M256,356 L256,372" stroke="#10253F" stroke-width="8" stroke-linecap="round"/>
+</svg>
