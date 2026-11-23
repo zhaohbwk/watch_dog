@@ -2,6 +2,7 @@
 name = "watchdog-gui"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 description = "应用看门狗图形配置工具：编辑监控配置、管理 Windows 服务、查看日志"
 
 [[bin]]

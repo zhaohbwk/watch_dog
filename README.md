@@ -292,3 +292,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\uninstall_service.ps1   # 卸
 - **程序被反复结束又重启**：检查是否配置了 `detect.port` 而程序实际并不监听该端口（或仅监听在 `detect.host` 访问不到的地址）——端口检测为准时会被判定假死并反复重启。
 - **不想监控某个程序但又不想删掉配置**：在 GUI 中勾选该程序的「跳过监控」（或配置里写 `skip = true`），保存后重启服务即可；恢复时取消勾选再重启服务。
 - **修改配置后不生效**：修改 `watchdog.toml` 后需重启服务：`sc.exe stop watchdog && sc.exe start watchdog`。
+
+## 开源许可
+
+本项目基于 [MIT License](LICENSE) 开源发布。

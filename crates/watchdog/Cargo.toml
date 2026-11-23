@@ -2,6 +2,7 @@
 name = "watchdog"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 description = "Windows 应用看门狗服务端：以 Windows 服务方式运行，监测并自动拉起配置的 exe/bat/jar/ps1 程序"
 
 [[bin]]

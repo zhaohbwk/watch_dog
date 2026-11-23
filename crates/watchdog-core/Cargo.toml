@@ -2,6 +2,7 @@
 name = "watchdog-core"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 description = "应用看门狗共享核心：配置解析、进程拉起、监控循环、日志与 Windows 服务集成"
 
 [dependencies]
